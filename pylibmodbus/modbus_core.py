@@ -49,7 +49,11 @@ class ModbusCore(object):
     def _run(self, func, *args):
         rc = func(self.ctx, *args)
         if rc == -1:
-            raise Exception(ffi.string(C.modbus_strerror(ffi.errno)))
+            # Retry once more
+            rc = func(self.ctx, *args)
+            if rc == -1:
+                raise Exception(ffi.string(C.modbus_strerror(ffi.errno)))
+        return rc
 
     def connect(self):
         return self._run(C.modbus_connect)
