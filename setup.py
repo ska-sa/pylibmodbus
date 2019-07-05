@@ -5,19 +5,19 @@ try:
 except ImportError:
     from distutils.core import setup
 
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 
 packages = [
     'pylibmodbus',
 ]
 
 setup(
-    name='pylibmodbus',
+    name='pylibmodbus-mkat',
     version=__version__,
-    description="Python wrapper for libmodbus",
+    description="Python wrapper for libmodbus (fork for MeerKAT support).",
     long_description=open('README.rst').read(),
-    author="Stéphane Raimbault",
-    author_email="stephane.raimbault@gmail.com",
+    author="SARAO MeerKAT Software Team",
+    author_email="software@ska.ac.za",
     url="http://libmodbus.org",
     keywords="python libmodbus",
     packages=packages,
